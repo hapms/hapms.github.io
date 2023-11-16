@@ -5,6 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200&display=swap" rel="stylesheet">
   <style>
     * {
       line-height: 1.2;
@@ -12,9 +15,9 @@
     }
 
     html {
-      color: #888;
+      color: #555;
       display: table;
-      font-family: sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
       height: 100%;
       text-align: center;
       width: 100%;
@@ -25,37 +28,13 @@
       vertical-align: middle;
       margin: 2em auto;
     }
-
-    h1 {
-      color: #555;
-      font-size: 2em;
-      font-weight: 400;
-    }
-
-    p {
-      margin: 0 auto;
-      width: 280px;
-    }
-
-    @media only screen and (max-width: 280px) {
-
-      body,
-      p {
-        width: 95%;
-      }
-
-      h1 {
-        font-size: 1.5em;
-        margin: 0 0 0.3em;
-      }
-
-    }
   </style>
 </head>
 
 <body>
-  <h1>Hello world!</h1>
-  <h1 id="text"></h1>
+  <span>우리 슬기 아이폰 도착할 때까지:</span>
+  <br>
+  <span id="text"></span>
   <script>
     setInterval(() => {
       var t1 = new Date();
@@ -74,7 +53,7 @@
 
       var seconds = Math.floor(delta % 60);  // in theory the modulus is not required
 
-      var text = "{0}일<br/>{1}시간<br/>{2}분<br/>{3}초".format(days, hours, minutes, seconds);
+      var text = "{0}일 {1}시간 {2}분 {3}초".format(days, hours, minutes, seconds);
       document.getElementById("text").innerHTML = text;
       
     }, 500);
