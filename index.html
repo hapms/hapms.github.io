@@ -1,10 +1,91 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+<html class="no-js" lang="ko-kr">
+
 <head>
-  <title>Test_Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+    * {
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    html {
+      color: #888;
+      display: table;
+      font-family: sans-serif;
+      height: 100%;
+      text-align: center;
+      width: 100%;
+    }
+
+    body {
+      display: table-cell;
+      vertical-align: middle;
+      margin: 2em auto;
+    }
+
+    h1 {
+      color: #555;
+      font-size: 2em;
+      font-weight: 400;
+    }
+
+    p {
+      margin: 0 auto;
+      width: 280px;
+    }
+
+    @media only screen and (max-width: 280px) {
+
+      body,
+      p {
+        width: 95%;
+      }
+
+      h1 {
+        font-size: 1.5em;
+        margin: 0 0 0.3em;
+      }
+
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Test</h1>
-  <p>TestTest</p>
+  <h1>Hello world!</h1>
+  <h1 id="text"></h1>
+  <script>
+    setInterval(() => {
+      var t1 = new Date();
+      var t2 = new Date("2023-11-29 15:00:00");
+
+      var delta = Math.abs(t2 - t1) / 1000;
+
+      var days = Math.floor(delta / 86400);
+      delta -= days * 86400;
+
+      var hours = Math.floor(delta / 3600) % 24;
+      delta -= hours * 3600;
+
+      var minutes = Math.floor(delta / 60) % 60;
+      delta -= minutes * 60;
+
+      var seconds = Math.floor(delta % 60);  // in theory the modulus is not required
+
+      var text = "{0}일<br/>{1}시간<br/>{2}분<br/>{3}초".format(days, hours, minutes, seconds);
+      document.getElementById("text").innerHTML = text;
+      
+    }, 500);
+
+    String.prototype.format = function () {
+      var formatted = this;
+      for (var arg in arguments) {
+        formatted = formatted.replace("{" + arg + "}", arguments[arg]);
+      }
+      return formatted;
+    };
+  </script>
 </body>
 </html>
